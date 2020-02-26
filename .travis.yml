@@ -5,6 +5,7 @@ env:
  - secure: "Qzd8rir4yJMK6Gpkt/2PtM/kQXTnDK94Z76C4yos4NQ8qc3vcQa+GGETBu2FnbeHVc2AuNUh/vu6elT96JyOAVnt8n/N4WDMtu/KAW8wJgXctS0nzGV8cDW2mY7aTTH9C9lkEqtnphIbaqTFnGs7he7OrARM7Sf9AKGhxLr4Wpz7kgCtVT4vuTh5VqfXKGh1JMQGGxjQonlq7LfNlbeIdxzaoZ3HkYy/eNo6KfZLSjqWNUazss8BH5gIYBBB4ky4NbqXT6p13PCuo5zlhdeXOZN0HfD4gAezQdbAfWYZYuau3tdHk6dQL4+qruRaIjJTbN3dhjQR9JG54gJZScjrY7PX+s2oAlhRQ9Vj5SKteOVFV6YFy9+aUZSZVOdw45iOBGiu1wwMCAdA+c3iiKV4kv72MNWpWBNg+vUNIcUaRMWorNYRsgUtQf20MmTvpWVXxktOgBHaGS5vPl+7DiM8qFLyTOZ/YUM5/zAb55WC+F7y2p1jhGN3LaNauhUiAIHQ76gu00je8JjA9aAN6W+10CdQ15KdA2uPhS4cwuc9iBHz+upZzFnFRNKFFM+wjvHbgAUeGMm9UKuwHMdFsVxCn8691nAQ4xmWg+lLHhk/Zk2n5oHtEyfVTfW+8pe7zae6WakpDTeBwIzhGr2S8C1yGaapGBY+Vj6tZGnx1ZE+8cM="
 install:
  - pip install -r requirements.txt
+ - sudo apt-get update
  - sudo apt-get install libavformat-dev libavfilter-dev libavdevice-dev ffmpeg
 script:
  - nosetests -v --with-coverage test/
