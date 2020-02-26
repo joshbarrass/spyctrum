@@ -10,8 +10,9 @@ Required Software:
  - ffmpeg
 """
 
-if __name__ == "__main__":
-    import sys
-    sys.path.append("..")
+## Uncomment if you need to use just the audio module
+# if __name__ == "__main__":
+#     import sys
+#     sys.path.append("..")
 
 from audio.reading import memread, tempread
