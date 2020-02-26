@@ -1,12 +1,12 @@
-"""audio conversion library.
+"""# audio conversion library.
 
 Uses ffmpeg to convert input audio file to a numpy array
 
-Required Libraries:
+## Required Libraries
  - numpy
  - scipy
 
-Required Software:
+## Required Software
  - ffmpeg
 """
 

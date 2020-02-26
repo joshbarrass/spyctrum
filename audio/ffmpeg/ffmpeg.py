@@ -5,10 +5,19 @@ class FFmpegException(Exception):
     pass
 
 def call(cmd):
-    """Calls ffmpeg and returns the subprocess
+    """Calls ffmpeg with some useful defaults and returns the
+subprocess. The ffmpeg command is already entered into the arguments
+and both stdout and stderr are piped so they can be read directly in
+Python.
 
-cmd is the arguments to ffmpeg -- this should not include "ffmpeg" at
-the start. Should be a list.
+## Args:
+- cmd: arguments to ffmpeg. This should not include "ffmpeg" at
+    the start. Should be a list.
+
+## Returns:
+- p: ffmpeg process Popen. Will not run by itself; you
+    must call a function such as p.wait() or p.communicate() for the
+    process to finish.
 
     """
     if not isinstance(cmd, list):
