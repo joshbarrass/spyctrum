@@ -39,11 +39,13 @@ data
     tempdir = tempfile.mkdtemp(suffix="spyctrum")
     temppath = os.path.join(tempdir, "temp.wav")
 
-    _call(["-i", fp, "-vn", "-f", "wav",
+    p = _call(["-i", fp, "-vn", "-f", "wav",
            "-acodec", "pcm_s16le", "-ac", "2", temppath])
+    p.wait()
 
     # read the file
     to_return = _wavfile.read(temppath)
+    
 
     # delete the temp dir
     shutil.rmtree(tempdir)
