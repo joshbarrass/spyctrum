@@ -1,5 +1,5 @@
 import unittest
-import audio
+import spyctrum.audio as audio
 import os
 import sys
 

@@ -15,4 +15,4 @@ Uses ffmpeg to convert input audio file to a numpy array
 #     import sys
 #     sys.path.append("..")
 
-from audio.reading import memread, tempread
+from spyctrum.audio.reading import memread, tempread

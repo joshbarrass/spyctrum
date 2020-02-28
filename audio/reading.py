@@ -4,8 +4,8 @@ import tempfile, shutil
 
 from scipy.io import wavfile as _wavfile
 
-from audio.ffmpeg import call as _call
-from audio.fixes import fix_RIFF_chunk_sizes
+from spyctrum.audio.ffmpeg import call as _call
+from spyctrum.audio.fixes import fix_RIFF_chunk_sizes
 
 def memread(fp: str):
     """reads an audio file into a numpy array without storing it as a

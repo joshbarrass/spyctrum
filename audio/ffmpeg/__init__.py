@@ -8,4 +8,4 @@ Provides simple bindings for calling ffmpeg
 """
 # TODO: increase usefulness of this module
 
-from audio.ffmpeg.ffmpeg import call
+from spyctrum.audio.ffmpeg.ffmpeg import call
