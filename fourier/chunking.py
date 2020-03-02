@@ -23,16 +23,16 @@ def get_chunk(a, timestamp, sample_rate, chunk_size, alignment=ALIGN_CENTRAL):
     if isinstance(a, np.ndarray):
         length = a.shape[0]
 
-    target = sample_rate * timestamp
+    target = int(sample_rate * timestamp)
     if alignment == ALIGN_CENTRAL:
         split, rem = divmod(chunk_size, 2)
         top = max(target - split, 0)
         bottom = min(target + split + rem, length)
     elif alignment == ALIGN_START:
         top = max(target, 0)
-        bottom = min(target + chunk_size)
+        bottom = min(target + chunk_size, length)
     elif alignment == ALIGN_END:
         top = max(target - chunk_size + 1, 0)
-        bottom = min(target + 1, 0)
+        bottom = min(target + 1, length)
 
     return a[top:bottom]
