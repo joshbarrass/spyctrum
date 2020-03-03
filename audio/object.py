@@ -17,7 +17,8 @@ Args:
  - method: int, either READ_MEMORY or READ_TEMPFILE. Specifies how the file
    will be read.
 """
-        self.fp = os.path.abspath(fp)
+        self.fp = os.path.abspath(os.path.expanduser(fp))
+        print(self.fp)
         if method == READ_MEMORY:
             self.rate, self.data = memread(self.fp)
         elif method == READ_TEMPFILE:
@@ -25,6 +26,9 @@ Args:
         else:
             raise ValueError("'method' should be either READ_MEMORY or READ_TEMPFILE")
 
+    # TODO: currently the fourier output is complex, but the input
+    # signal is real. Need to remove the complex part and the negative
+    # frequencies
     def fourierChunk(self, timestamp, chunk_size, alignment=ALIGN_CENTRAL, mono=True):
         """Uses audio.fourier.get_chunk to get a chunk from the audio data and
 perform the Fourier transform of it.

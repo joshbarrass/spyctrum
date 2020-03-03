@@ -15,7 +15,7 @@ Returns a tuple containing the sample rate in Hz followed by the audio
 data
 
     """
-    fp = os.path.abspath(fp)
+    fp = os.path.abspath(os.path.expanduser(fp))
     p = _call(["-i", fp, "-vn", "-f", "wav",
                "-acodec", "pcm_s16le", "-ac", "2", "-"])
     # read data from process and fix
@@ -33,7 +33,7 @@ Returns a tuple containing the sample rate in Hz followed by the audio
 data
 
     """
-    fp = os.path.abspath(fp)
+    fp = os.path.abspath(os.path.expanduser(fp))
 
     # generate a temp dir to store the file
     tempdir = tempfile.mkdtemp(suffix="spyctrum")
