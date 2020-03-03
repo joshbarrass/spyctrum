@@ -16,8 +16,8 @@ My attempt to create a spectrum analyser.
 - [ ] Fourier analysis functions
     - [ ] Frequencies corresponding to musical notes
         - [ ] Conversion between frequencies and musical notes
-    - [ ] Variable chunk size
-    - [ ] Variable chunk position
+    - [X] Variable chunk size
+    - [X] Variable chunk position
 - [ ] Graphing functions
     - [ ] Musical notes on x-axis
     - [ ] Linear amplitude
