@@ -10,9 +10,9 @@ Uses ffmpeg to convert input audio file to a numpy array
  - ffmpeg
 """
 
-## Uncomment if you need to use just the audio module
+## Uncomment if you need to use just the audio module directly
 # if __name__ == "__main__":
 #     import sys
 #     sys.path.append("..")
 
-from spyctrum.audio.reading import memread, tempread
+from spyctrum.audio.object import Audio
