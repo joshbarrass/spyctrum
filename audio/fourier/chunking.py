@@ -34,5 +34,7 @@ def get_chunk(a, timestamp, sample_rate, chunk_size, alignment=ALIGN_CENTRAL):
     elif alignment == ALIGN_END:
         top = max(target - chunk_size + 1, 0)
         bottom = min(target + 1, length)
+    else:
+        raise ValueError("invalid value for 'alignment'") 
 
     return a[top:bottom]
