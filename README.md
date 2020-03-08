@@ -30,3 +30,4 @@ My attempt to create a spectrum analyser.
     - [ ] Seekbar to select point of interest
     - [ ] Playback with live graphs
     - [ ] Mouse over bar on graph highlights the same note at different octaves
+- [ ] Customisable spectrum animations
