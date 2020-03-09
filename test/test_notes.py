@@ -15,10 +15,10 @@ class NoteTests(unittest.TestCase):
         self.assertTrue(notes.note_to_frequency("A4"), notes.A4)
 
     def test_C(self):
-        for i in range(len(C)):
+        for i, freq in enumerate(C):
             np.testing.assert_approx_equal(
                 notes.note_to_frequency("C{i}".format(i=i)),
-                C[i],
+                freq,
                 C_FIGS[i],
             )
 
