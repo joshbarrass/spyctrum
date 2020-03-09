@@ -6,6 +6,7 @@ Provides simple bindings for calling ffmpeg
  - ffmpeg
 
 """
-# TODO: increase usefulness of this module
+# Optional TODO: increase usefulness of this module
 
 from spyctrum.audio.ffmpeg.ffmpeg import call
+from spyctrum.audio.ffmpeg.ffmpeg import FFMPEG_INSTALLED, FFmpegException

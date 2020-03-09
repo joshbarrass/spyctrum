@@ -1,6 +1,8 @@
 import subprocess
 import sys
 
+FFMPEG_INSTALLED = False
+
 class FFmpegException(Exception):
     pass
 
@@ -31,5 +33,8 @@ Python.
 # check ffmpeg is installed
 _H, _ERRTEXT = call(["-h"]).communicate()
 if _H == "":
-    raise FFmpegException("ffmpeg not detected")
-print(_ERRTEXT.decode("utf-8"), file=sys.stderr)
+    #raise FFmpegException("ffmpeg not detected")
+    print("ffmpeg was not detected. ffmpeg functions will be disabled.", file=sys.stderr)
+else:
+    print(_ERRTEXT.decode("utf-8"), file=sys.stderr)
+    FFMPEG_INSTALLED = True

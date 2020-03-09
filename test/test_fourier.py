@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-import spyctrum.fourier as fourier
+import spyctrum.audio.fourier as fourier
 
 TEST_ARRAY = np.array([
     [0, 0],  # 0.0s
