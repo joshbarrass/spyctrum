@@ -1,3 +1,5 @@
+import math
+
 # define frequency of A4 to determine other notes
 A4 = 440
 
@@ -6,7 +8,7 @@ LETTER_TABLE = ("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
 # exponential term
 A = 2**(1/12)
 
-def semitone_diff(note):
+def note_to_semitone_diff(note: str) -> float:
     """Returns the number of semitones between the input note and A4
 
 # Args:
@@ -29,7 +31,7 @@ def semitone_diff(note):
     diff = 12 * (number-4) + LETTER_TABLE.index(letter) - 9
     return diff
 
-def semitone_diff_to_frequency(n):
+def semitone_diff_to_frequency(n: float) -> float:
     """Converts a difference in semitones between your target note
 and A4 to a frequency
 
@@ -42,7 +44,7 @@ and A4 to a frequency
 """
     return A4 * A**n
 
-def note_to_frequency(note):
+def note_to_frequency(note: str) -> float:
     """Takes an input note name and converts it to its frequency
 
 # Args:
@@ -51,5 +53,49 @@ def note_to_frequency(note):
 # Returns:
  - frequency: float, frequency of the note
 """
-    n = semitone_diff(note)
+    n = note_to_semitone_diff(note)
     return semitone_diff_to_frequency(n)
+
+def frequency_to_semitone_diff(f: float) -> float:
+    """Takes an input frequency and converts it to a semitone difference
+from A4
+
+# Args:
+ - f: float, frequency of the note
+
+# Returns:
+ - diff: float, difference in semitones from A4
+"""
+    return math.log(f / A4, A)
+
+def semitone_diff_to_note(diff: float) -> str:
+    """Takes an input semitone difference from A4 and converts it to the
+nearest note
+
+# Args:
+ - diff: float, difference in semitones from A4
+
+# Returns:
+ - note: string, name of the nearest note
+
+    """
+    number, letter = divmod(round(diff), 12)
+    print(number, letter)
+    number += 4
+    letter = (letter + 9) % 12
+    if letter < 9:
+        number += 1
+    letter = LETTER_TABLE[letter]
+    return letter + str(number)
+
+def frequency_to_note(f: float) -> float:
+    """Takes an input frequency and converts it to the nearest note name
+
+# Args:
+ - f: float, frequency of the note
+
+# Returns:
+ - note: string, name of the nearest note
+"""
+    diff = frequency_to_semitone_diff(f)
+    return semitone_diff_to_note(diff)
