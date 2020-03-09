@@ -1,6 +1,7 @@
 import os
 
 import numpy as np
+from scipy.io import wavfile
 
 from spyctrum.audio.reading import memread, tempread
 from spyctrum.audio.fourier import get_chunk, ALIGN_CENTRAL
@@ -18,8 +19,10 @@ Args:
    will be read.
 """
         self.fp = os.path.abspath(os.path.expanduser(fp))
-        print(self.fp)
-        if method == READ_MEMORY:
+        if os.path.splitext(self.fp)[1].lower() == "wav":
+            # don't need ffmpeg to read .wav, just use scipy directly
+            self.rate, self.data = wavfile.read(self.fp)
+        elif method == READ_MEMORY:
             self.rate, self.data = memread(self.fp)
         elif method == READ_TEMPFILE:
             self.rate, self.data = tempread(self.fp)
