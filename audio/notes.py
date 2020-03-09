@@ -1,7 +1,7 @@
 # define frequency of A4 to determine other notes
 A4 = 440
 
-LETTER_TABLE = ("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#" "B")
+LETTER_TABLE = ("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
 
 # exponential term
 A = 2**(1/12)
@@ -10,7 +10,8 @@ def semitone_diff(note):
     """Returns the number of semitones between the input note and A4
 
 # Args:
- - note: string, name of the note (e.g. "A4", "C#4"). Sharps "#" should be put _before_ the number. Flats are not supported.
+ - note: string, name of the note (e.g. "A4", "C#4"). Sharps "#"
+   should be put _before_ the number. Flats are not supported.
 
 # Returns:
  - diff: float, number of semitones between the note and A4
@@ -28,6 +29,19 @@ def semitone_diff(note):
     diff = 12 * (number-4) + LETTER_TABLE.index(letter) - 9
     return diff
 
+def semitone_diff_to_frequency(n):
+    """Converts a difference in semitones between your target note
+and A4 to a frequency
+
+# Args:
+ - n: float, number of semitones between target note and A4.
+   Does not have to an integer!
+
+# Returns:
+ - frequency: float, frequency of the note
+"""
+    return A4 * A**n
+
 def note_to_frequency(note):
     """Takes an input note name and converts it to its frequency
 
@@ -37,7 +51,5 @@ def note_to_frequency(note):
 # Returns:
  - frequency: float, frequency of the note
 """
-    # find the number of semitones between this note and A4
     n = semitone_diff(note)
-
-    return A4 * A**n
+    return semitone_diff_to_frequency(n)
