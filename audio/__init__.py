@@ -16,3 +16,6 @@ Uses ffmpeg to convert input audio file to a numpy array
 #     sys.path.append("..")
 
 from spyctrum.audio.object import Audio
+
+# expose frequency <-> note conversions at top level
+from spyctrum.audio.notes import note_to_frequency, frequency_to_note

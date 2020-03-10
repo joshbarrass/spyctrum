@@ -1,4 +1,9 @@
 import math
+import sys
+
+_LOG2_AVAILABLE = False
+if sys.version_info.major >= 3 and sys.version_info.minor >= 3:
+    _LOG2_AVAILABLE = True
 
 # define frequency of A4 to determine other notes
 A4 = 440
@@ -6,7 +11,7 @@ A4 = 440
 LETTER_TABLE = ("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
 
 # exponential term
-A = 2**(1/12)
+A = 2**(1 / 12)
 
 def note_to_semitone_diff(note: str) -> float:
     """Returns the number of semitones between the input note and A4
@@ -21,7 +26,7 @@ def note_to_semitone_diff(note: str) -> float:
     letter = note[0].upper()
     sharp = note[1] == "#"
     if sharp:
-        if letter == "B" or letter == "E":
+        if letter in ("B", "E"):
             raise ValueError(letter + "# is not a valid note")
         letter += "#"
         number = float(note[2:])
@@ -66,7 +71,9 @@ from A4
 # Returns:
  - diff: float, difference in semitones from A4
 """
-    return math.log(f / A4, A)
+    if _LOG2_AVAILABLE:
+        return 12 * math.log2(f / A4)
+    return 12 * math.log(f / A4, 2)
 
 def semitone_diff_to_note(diff: float) -> str:
     """Takes an input semitone difference from A4 and converts it to the
