@@ -47,7 +47,7 @@ etc.
 - [ ] Write a proper README about the project 
 - [X] Fourier analysis functions
     - [ ] ~~Frequencies corresponding to musical notes~~ _This will be done at the histogram level by definining appropriate bins_
-    - [ ] Conversion between frequencies and musical notes
+    - [x] Conversion between frequencies and musical notes
     - [X] Variable chunk size
     - [X] Variable chunk position
 - [ ] Graphing functions
