@@ -22,13 +22,13 @@ def note_to_semitone_diff(note: str) -> float:
     sharp = note[1] == "#"
     if sharp:
         if letter == "B" or letter == "E":
-            raise ValueError(letter+"# is not a valid note")
+            raise ValueError(letter + "# is not a valid note")
         letter += "#"
         number = float(note[2:])
     else:
         number = float(note[1:])
 
-    diff = 12 * (number-4) + LETTER_TABLE.index(letter) - 9
+    diff = 12 * (number - 4) + LETTER_TABLE.index(letter) - 9
     return diff
 
 def semitone_diff_to_frequency(n: float) -> float:
@@ -80,10 +80,10 @@ nearest note
 
     """
     number, letter = divmod(round(diff), 12)
-    print(number, letter)
     number += 4
     letter = (letter + 9) % 12
     if letter < 9:
+        # if the letter is C-G we need to go up an octave
         number += 1
     letter = LETTER_TABLE[letter]
     return letter + str(number)

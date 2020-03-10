@@ -10,9 +10,9 @@ C_FIGS = [5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8]
 A_SHARP = 466.164
 A_SHARP_FIGS = 6
 
-class NoteTests(unittest.TestCase):
+class NoteToFreqTests(unittest.TestCase):
     def test_A4(self):
-        self.assertTrue(notes.note_to_frequency("A4"), notes.A4)
+        self.assertEqual(notes.note_to_frequency("A4"), notes.A4)
 
     def test_C(self):
         for i, freq in enumerate(C):
@@ -28,3 +28,17 @@ class NoteTests(unittest.TestCase):
             A_SHARP,
             A_SHARP_FIGS,
         )
+
+class FreqToNoteTests(unittest.TestCase):
+    def test_A4(self):
+        fuzzed = notes.A4 + 5
+        self.assertEqual(notes.frequency_to_note(fuzzed), "A4")
+        fuzzed -= 10
+        self.assertEqual(notes.frequency_to_note(fuzzed), "A4")
+
+    def test_C(self):
+        # accurate to 0DP
+        self.assertEqual(notes.frequency_to_note(262), "C4")
+
+        # accurate to 3SF
+        self.assertEqual(notes.frequency_to_note(16700), "C10")
