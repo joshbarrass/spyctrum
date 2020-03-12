@@ -35,6 +35,10 @@ class ObjTests(unittest.TestCase):
     def tearDown(self):
         self.a = None
 
+    def get_positive_frequencies(self, A):
+        N = len(A)
+        return A[0:int((N + 1) / 2)]
+
     def test_read(self):
         self.assertEqual(self.a.rate, TEST_RATE)
         self.assertEqual(self.a.data.shape, TEST_SHAPE)
@@ -42,5 +46,6 @@ class ObjTests(unittest.TestCase):
         self.assertEqual(tuple(self.a.data[-1, :]), LAST_SAMPLE)
 
     def test_fourierFreq(self,):
-        self.assertEqual(tuple(self.a.fourierFreq(20)), tuple(np.fft.fftfreq(20, 1/self.a.rate)))
-        self.assertEqual(tuple(self.a.fourierFreq(50)), tuple(np.fft.fftfreq(50, 1/self.a.rate)))
+        self.assertEqual(tuple(self.a.fourierFreq(20)), tuple(self.get_positive_frequencies(np.fft.fftfreq(20, 1/self.a.rate))))
+        self.assertEqual(tuple(self.a.fourierFreq(50)), tuple(self.get_positive_frequencies(np.fft.fftfreq(50, 1/self.a.rate))))
+        

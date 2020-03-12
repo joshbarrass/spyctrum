@@ -44,9 +44,11 @@ the point of about which you wish to sample
 ALIGN_CENTRAL
  - mono: bool, whether to make the data mono before performing the FFT
 
-## Returns:
- - freqdata: array, the FFT of the chunk of data. For an array
-corresponding to the frequencies in this array, use Audio.fourierFreq
+## Returns
+ - freqdata: array, the FFT of the chunk of data. The negative
+frequencies will be removed, but the coefficients will still be
+complex. For an array corresponding to the frequencies in this array,
+use Audio.fourierFreq
 
         """
         
@@ -60,15 +62,24 @@ corresponding to the frequencies in this array, use Audio.fourierFreq
             chunk = np.sum(chunk, axis=1)
 
         fftdata = np.fft.fft(chunk, axis=0)
-        return fftdata
+
+        # remove negative frequencies since audio is a solely real
+        # signal
+        N = len(fftdata)
+        posfftdata = fftdata[0:int((N + 1) / 2)]
+        return posfftdata
 
     def fourierFreq(self, chunk_size):
-        """Returns the frequency array for a given chunk size
+        """Returns the frequency array for a given chunk size. The negative
+frequencies will be removed.
 
 ## Args:
  - chunk_size: int, number of samples in your chunk
 
 ## Returns:
  - f: array, contains the frequencies in the FFT
-"""
-        return np.fft.fftfreq(chunk_size, 1.0 / self.rate)
+
+        """
+        A = np.fft.fftfreq(chunk_size, 1.0 / self.rate)
+        N = len(A)
+        return A[0:int((N + 1) / 2)]
