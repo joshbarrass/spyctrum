@@ -1,5 +1,5 @@
 nose
 coverage==4.3
 codeclimate-test-reporter
-numpy==1.17.1
+numpy==1.22.0
 scipy==1.3.1
