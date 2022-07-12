@@ -50,6 +50,7 @@ etc.
     - [x] Conversion between frequencies and musical notes
     - [X] Variable chunk size
     - [X] Variable chunk position
+    - [ ] Apply window functions to a chunk
 - [ ] Graphing functions
     - [ ] Musical notes on x-axis
     - [ ] Linear amplitude
