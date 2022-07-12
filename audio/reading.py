@@ -1,4 +1,5 @@
 import os
+import sys
 from io import BytesIO
 import tempfile
 import shutil
@@ -48,6 +49,9 @@ data
     p = _call(["-i", fp, "-vn", "-f", "wav",
                "-acodec", "pcm_s16le", "-ac", "2", temppath])
     p.wait()
+    err = p.stderr.read().decode().strip()
+    if len(err) > 0:
+        print(err, file=sys.stderr)
 
     # read the file
     to_return = _wavfile.read(temppath)
