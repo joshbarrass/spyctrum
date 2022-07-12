@@ -9,4 +9,4 @@ install:
  - sudo apt-get install libavformat-dev libavfilter-dev libavdevice-dev ffmpeg
 script:
  - nosetests -v --with-coverage test/
- - codeclimate-test-reporter
+# - codeclimate-test-reporter

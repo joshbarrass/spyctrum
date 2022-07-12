@@ -1,5 +1,5 @@
 nose
 coverage>=4.0,<4.4
-codeclimate-test-reporter
+#codeclimate-test-reporter
 numpy==1.22.0
 scipy==1.5.2
